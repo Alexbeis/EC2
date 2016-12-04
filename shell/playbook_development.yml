@@ -1,0 +1,16 @@
+---
+- name: My first playbook :)
+  hosts: "webservers"
+  become: true
+  become_user: root
+  roles:
+    - role: repositories
+
+    - role: geerlingguy.ntp
+      ntp_timezone: Europe/Madrid
+
+    - { role: geerlingguy.apache }
+    - { role: geerlingguy.firewall }
+    - { role: geerlingguy.php }
+    - { role: geerlingguy.composer }
+    - { role: geerlingguy.mysql }

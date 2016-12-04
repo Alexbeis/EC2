@@ -1,0 +1,12 @@
+---
+- name: Install Apache
+  yum: pkg=httpd state=present
+
+- name: Add Configuration file in apache conf.d
+  copy: src=files/configuration.conf dest=/etc/httpd/conf.d/configuration.conf
+
+- name: Create default HTML with SO version
+  template: src=templates/index.html dest=/home/vagrant/index_new.html
+
+- name: restart apache
+  service: name=httpd state=restarted

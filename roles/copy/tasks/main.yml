@@ -1,0 +1,15 @@
+---
+- name: common packages
+  yum: name={{item}} state=present
+  with_items:
+    - git
+    - tree
+    - vim
+    - wget
+- name: Add Configuration file in apache conf.d
+  copy: src=files/{{item}}.txt dest=/tmp/{{item}}.txt
+  with_items:
+    - configuration1
+    - configuration2
+
+
